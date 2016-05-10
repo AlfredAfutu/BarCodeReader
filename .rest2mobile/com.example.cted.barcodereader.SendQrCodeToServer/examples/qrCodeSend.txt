@@ -1,0 +1,11 @@
++Name qrCodeSend
+
++Request
+POST http://gemroc-dev.gemroc.com/qrCode/send?userId=654897787re3&qrCode=911200AB
++Headers
+barcodereader-api : com.gemroc.android
++Body
+
++Response
++Body
+

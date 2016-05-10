@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.example.cted.barcodereader"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile("com.magnet:r2m-sdk-android:1.1.0@aar") {
+        transitive = true
+    }
+}
+buildscript {
+    ext.kotlin_version = '0.11.91.2'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+repositories {
+    mavenCentral()
+    maven {
+        url "http://repo.magnet.com:8081/artifactory/public/"
+    }
+}
+
+// Adding R2M dependencies and public repo
+// Go to https://github.com/magnetsystems/r2m-plugin-android for more info
+
